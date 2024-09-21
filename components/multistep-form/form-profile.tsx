@@ -19,7 +19,7 @@ interface Props {
 // xs bg-slate, md bg-white, lg mg-slate
 const FormProfile: FC<Props> = ({ form }) => {
   return (
-    <div className="space-y-2 rounded-lg p-8 bg-white">
+    <div className="space-y-2 rounded-lg p-8 bg-card">
       <FormField
         control={form.control}
         name="name"

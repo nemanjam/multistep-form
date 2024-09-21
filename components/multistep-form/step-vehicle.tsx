@@ -5,11 +5,13 @@ import { UseFormReturn } from 'react-hook-form';
 import { RegisterSchemaValues } from '@/lib/schemas';
 import { Button } from '@/components/ui/button';
 
+import FormVehicle from './form-vehicle';
+
 interface Props {
   form: UseFormReturn<RegisterSchemaValues>;
 }
 
-const StepVehicle: FC<Props> = () => {
+const StepVehicle: FC<Props> = ({ form }) => {
   return (
     <div className="flex justify-between gap-4">
       <div className="basis-1/2">
@@ -19,7 +21,9 @@ const StepVehicle: FC<Props> = () => {
         </Button>
         <h2>Select a vehicle for your free health check.</h2>
       </div>
-      <div className="basis-1/2 border border-blue-500">vehicle form</div>
+      <div className="basis-1/2">
+        <FormVehicle form={form} />
+      </div>
     </div>
   );
 };
