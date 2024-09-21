@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
 interface Props {}
 
-const StepProfile: React.FC<Props> = () => {
+const StepProfile: FC<Props> = () => {
   return (
     <div className="flex justify-between gap-4">
       <div className="basis-1/2">

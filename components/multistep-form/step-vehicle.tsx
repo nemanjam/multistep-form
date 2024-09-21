@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { CarFront } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
 interface Props {}
 
-const StepVehicle: React.FC<Props> = () => {
+const StepVehicle: FC<Props> = () => {
   return (
     <div className="flex justify-between gap-4">
       <div className="basis-1/2">

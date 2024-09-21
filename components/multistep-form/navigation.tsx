@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { steps } from '@/components/multistep-form/form';
+import { steps } from '@/components/multistep-form/form-register';
 
 interface Props {
   onBack: () => void;
@@ -10,7 +11,7 @@ interface Props {
   currentStep: number;
 }
 
-const Navigation: React.FC<Props> = ({ onBack, onNext, currentStep }) => {
+const Navigation: FC<Props> = ({ onBack, onNext, currentStep }) => {
   return (
     <div className="flex items-center justify-between gap-4">
       <Button
@@ -24,6 +25,7 @@ const Navigation: React.FC<Props> = ({ onBack, onNext, currentStep }) => {
       </Button>
 
       <Progress value={50} />
+
       {currentStep < steps.length - 1 && (
         <Button type="button" className="rounded-full" onClick={onNext}>
           Continue

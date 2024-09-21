@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import Navigation from '@/components/multistep-form/navigation';
 import StepProfile from '@/components/multistep-form/step-profile';
@@ -19,7 +19,7 @@ export const steps = [
   },
 ];
 
-export default function IndexPage() {
+const FormRegister: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const handleNextStep = () => {
@@ -47,4 +47,6 @@ export default function IndexPage() {
       />
     </>
   );
-}
+};
+
+export default FormRegister;

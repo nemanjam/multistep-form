@@ -1,4 +1,4 @@
-import Form from '@/components/multistep-form/form';
+import Form from '@/components/multistep-form/form-register';
 
 export default function IndexPage() {
   return (
