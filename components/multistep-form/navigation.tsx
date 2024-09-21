@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { steps } from '@/components/multistep-form/form-register';
+import { steps } from '@/components/multistep-form/register-flow';
 
 interface Props {
   onBack: () => void;

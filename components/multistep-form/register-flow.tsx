@@ -19,7 +19,7 @@ export const steps = [
   },
 ];
 
-const FormRegister: FC = () => {
+const RegisterFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const handleNextStep = () => {
@@ -49,4 +49,4 @@ const FormRegister: FC = () => {
   );
 };
 
-export default FormRegister;
+export default RegisterFlow;
