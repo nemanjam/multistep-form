@@ -1,7 +1,10 @@
 'use client';
 
 import { FC, useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
+import { registerSchema, RegisterSchemaType } from '@/lib/schemas';
 import Navigation from '@/components/multistep-form/navigation';
 import StepProfile from '@/components/multistep-form/step-profile';
 import StepVehicle from '@/components/multistep-form/step-vehicle';
@@ -19,8 +22,22 @@ export const steps = [
   },
 ];
 
+const defaultValues = {
+  name: '',
+  zip: '',
+  email: '',
+  phone: '',
+  receiveSms: false,
+  model: '',
+};
+
 const RegisterFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
+
+  const form = useForm<RegisterSchemaType>({
+    resolver: zodResolver(registerSchema),
+    defaultValues,
+  });
 
   const handleNextStep = () => {
     if (currentStep >= steps.length - 1) return;
