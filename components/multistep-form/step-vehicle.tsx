@@ -1,9 +1,13 @@
 import { FC } from 'react';
 import { CarFront } from 'lucide-react';
+import { UseFormReturn } from 'react-hook-form';
 
+import { RegisterSchemaValues } from '@/lib/schemas';
 import { Button } from '@/components/ui/button';
 
-interface Props {}
+interface Props {
+  form: UseFormReturn<RegisterSchemaValues>;
+}
 
 const StepVehicle: FC<Props> = () => {
   return (

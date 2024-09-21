@@ -1,8 +1,13 @@
 import { FC } from 'react';
+import { UseFormReturn } from 'react-hook-form';
 
-interface Props {}
+import { RegisterSchemaValues } from '@/lib/schemas';
 
-const FormVehicle: FC<Props> = () => {
+interface Props {
+  form: UseFormReturn<RegisterSchemaValues>;
+}
+
+const FormVehicle: FC<Props> = ({ form }) => {
   return <div className="flex justify-between gap-4"></div>;
 };
 

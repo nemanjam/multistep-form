@@ -11,4 +11,4 @@ export const registerSchema = z.object({
   model: z.string().min(1, 'Vehicle model is required'),
 });
 
-export type RegisterSchemaType = z.output<typeof registerSchema>;
+export type RegisterSchemaValues = z.output<typeof registerSchema>;

@@ -1,11 +1,17 @@
 import { FC } from 'react';
 import { Zap } from 'lucide-react';
+import { UseFormReturn } from 'react-hook-form';
 
+import { RegisterSchemaValues } from '@/lib/schemas';
 import { Button } from '@/components/ui/button';
 
-interface Props {}
+import FormProfile from './form-profile';
 
-const StepProfile: FC<Props> = () => {
+interface Props {
+  form: UseFormReturn<RegisterSchemaValues>;
+}
+
+const StepProfile: FC<Props> = ({ form }) => {
   return (
     <div className="flex justify-between gap-4">
       <div className="basis-1/2">
@@ -19,7 +25,9 @@ const StepProfile: FC<Props> = () => {
           find service providers in your area.
         </p>
       </div>
-      <div className="basis-1/2 border border-blue-500">profile form</div>
+      <div className="basis-1/2">
+        <FormProfile form={form} />
+      </div>
     </div>
   );
 };

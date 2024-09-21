@@ -4,7 +4,8 @@ import { FC, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { registerSchema, RegisterSchemaType } from '@/lib/schemas';
+import { registerSchema, RegisterSchemaValues } from '@/lib/schemas';
+import { Form } from '@/components/ui/form';
 import Navigation from '@/components/multistep-form/navigation';
 import StepProfile from '@/components/multistep-form/step-profile';
 import StepVehicle from '@/components/multistep-form/step-vehicle';
@@ -34,7 +35,7 @@ const defaultValues = {
 const RegisterFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
-  const form = useForm<RegisterSchemaType>({
+  const form = useForm<RegisterSchemaValues>({
     resolver: zodResolver(registerSchema),
     defaultValues,
   });
@@ -52,17 +53,17 @@ const RegisterFlow: FC = () => {
   };
 
   return (
-    <>
+    <Form {...form}>
       <form>
-        {currentStep === 0 && <StepProfile />}
-        {currentStep === 1 && <StepVehicle />}
+        {currentStep === 0 && <StepProfile form={form} />}
+        {currentStep === 1 && <StepVehicle form={form} />}
       </form>
       <Navigation
         onNext={handleNextStep}
         onBack={handlePrevStep}
         currentStep={currentStep}
       />
-    </>
+    </Form>
   );
 };
 
