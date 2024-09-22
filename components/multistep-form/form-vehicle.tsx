@@ -21,7 +21,9 @@ const FormVehicle: FC<Props> = ({ form }) => {
       >
         <div className="text-start">
           <p className="text-lg font-medium">2015 Tesla Model S</p>
-          <p className="text-xs uppercase font-light">7YJSA1H4FF063636</p>
+          <p className="text-xs uppercase font-light text-slate-500">
+            7YJSA1H4FF063636
+          </p>
         </div>
         <ArrowRight />
       </Button>
@@ -35,7 +37,9 @@ const FormVehicle: FC<Props> = ({ form }) => {
         {/* <ArrowRight /> */}
         <div className="text-start">
           <p className="text-lg font-medium">2021 Tesla Model Y</p>
-          <p className="text-xs uppercase font-light">5YJSA1H4FF02727</p>
+          <p className="text-xs uppercase font-light text-slate-500">
+            5YJSA1H4FF02727
+          </p>
         </div>
 
         <Loader2 className="animate-spin" />

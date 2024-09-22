@@ -53,17 +53,26 @@ const RegisterFlow: FC = () => {
   };
 
   return (
-    <Form {...form}>
-      <form>
-        {currentStep === 0 && <StepProfile form={form} />}
-        {currentStep === 1 && <StepVehicle form={form} />}
-      </form>
-      <Navigation
-        onNext={handleNextStep}
-        onBack={handlePrevStep}
-        currentStep={currentStep}
-      />
-    </Form>
+    <section className="flex-1 flex flex-col">
+      <Form {...form}>
+        <div className="container flex-1 flex flex-col justify-center">
+          <form>
+            {currentStep === 0 && <StepProfile form={form} />}
+            {currentStep === 1 && <StepVehicle form={form} />}
+          </form>
+        </div>
+
+        <div className="border-t border-border">
+          <div className="p-4 mx-auto max-w-screen-2xl">
+            <Navigation
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+              currentStep={currentStep}
+            />
+          </div>
+        </div>
+      </Form>
+    </section>
   );
 };
 

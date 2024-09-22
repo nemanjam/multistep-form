@@ -13,15 +13,18 @@ interface Props {
 
 const StepVehicle: FC<Props> = ({ form }) => {
   return (
-    <div className="flex justify-between gap-4">
-      <div className="basis-1/2">
-        <Button type="button" className="uppercase rounded-xl">
+    <div className="flex justify-evenly items-center gap-4">
+      <div className="space-y-6 basis-1/3 grow lg:max-w-lg">
+        <Button type="button" className="uppercase rounded-xl text-lime-300">
           <CarFront className="mr-2 size-4" />
           Vehicle
         </Button>
-        <h2>Select a vehicle for your free health check.</h2>
+        <h2 className="text-2xl font-bold">
+          Select a vehicle for your free health check.
+        </h2>
       </div>
-      <div className="basis-1/2">
+
+      <div className="basis-1/3 grow lg:max-w-lg">
         <FormVehicle form={form} />
       </div>
     </div>
