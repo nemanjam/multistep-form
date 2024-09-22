@@ -17,7 +17,7 @@ const FormVehicle: FC<Props> = ({ form }) => {
         name="model"
         value="tesla 1"
         variant="outline"
-        className="w-full h-auto flex items-center justify-between p-4"
+        className="w-full h-auto flex items-center justify-between gap-4 p-4 bg-card"
       >
         <div className="text-start">
           <p className="text-lg font-medium">2015 Tesla Model S</p>
@@ -32,7 +32,7 @@ const FormVehicle: FC<Props> = ({ form }) => {
         name="model"
         value="tesla 1"
         variant="outline"
-        className="w-full h-auto flex items-center justify-between p-4"
+        className="w-full h-auto flex items-center justify-between gap-4 p-4 bg-card"
       >
         {/* <ArrowRight /> */}
         <div className="text-start">
