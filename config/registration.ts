@@ -4,7 +4,10 @@ import { UserRegisterSchemaKeys } from '@/types/register';
 export const SERVER_ACTION_DELAY = 2000;
 
 /** in milliseconds */
-export const TOAST_DURATION = 2000;
+export const TOAST_DURATION = 5000;
+
+/** in milliseconds */
+export const FORM_RESET_DELAY = 2000;
 
 /**
  * This comes from the server. Vehicles buttons to submit the registration flow.

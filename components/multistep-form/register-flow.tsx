@@ -8,12 +8,15 @@ import { useForm } from 'react-hook-form';
 
 import {
   UserRegisterActionResponse,
-  UserRegisterSchemaKeys,
   UserRegisterSchemaValues,
 } from '@/types/register';
-import { REGISTRATION_STEPS, TOAST_DURATION } from '@/config/registration';
+import {
+  FORM_RESET_DELAY,
+  REGISTRATION_STEPS,
+  TOAST_DURATION,
+} from '@/config/registration';
 import { userRegisterSchema } from '@/lib/schemas';
-import { objectToFormData } from '@/lib/utils';
+import { objectToFormData, wait } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { Form } from '@/components/ui/form';
 import Navigation from '@/components/multistep-form/navigation';
@@ -21,10 +24,10 @@ import StepProfile from '@/components/multistep-form/step-profile';
 import StepVehicle from '@/components/multistep-form/step-vehicle';
 
 const defaultValues: UserRegisterSchemaValues = {
-  name: 'test',
-  zip: '12312',
-  email: 'sss@sss.sss',
-  phone: '1231231',
+  name: '',
+  zip: '',
+  email: '',
+  phone: '',
   receiveSms: false,
   model: '',
 };
@@ -61,7 +64,13 @@ const RegisterFlow: FC = () => {
         <pre>{JSON.stringify(userRegisterActionResponse, null, 2)}</pre>
       ),
     });
-  }, [toast, userRegisterActionResponse]);
+
+    if (userRegisterActionResponse.success) {
+      setCurrentStep(0);
+
+      wait(FORM_RESET_DELAY).then(() => form.reset());
+    }
+  }, [toast, userRegisterActionResponse, form]);
 
   const onSubmit = (data: UserRegisterSchemaValues) => {
     console.log('data', data);
@@ -105,12 +114,13 @@ const RegisterFlow: FC = () => {
   }, [form.formState]);
 
   const getProgress = (): number => {
-    const { isSubmitted } = form.formState;
+    const { isSubmitted, isDirty } = form.formState;
 
     let progress = 0;
 
     switch (true) {
       case currentStep === 0 && !isValidStepProfile:
+      case currentStep === 0 && !isDirty:
         progress = 25;
         break;
       case currentStep === 0 && isValidStepProfile:

@@ -1,7 +1,7 @@
 'use server';
 
 import { UserRegisterActionResponse } from '@/types/register';
-import { TOAST_DURATION } from '@/config/registration';
+import { SERVER_ACTION_DELAY } from '@/config/registration';
 import { userRegisterSchema } from '@/lib/schemas';
 import { wait, zodErrorToString } from '@/lib/utils';
 
@@ -32,7 +32,7 @@ export const userRegisterAction = async (
     console.log('userRegisterAction success, response:', response);
   else console.error('userRegisterAction error, response:', response);
 
-  await wait(TOAST_DURATION);
+  await wait(SERVER_ACTION_DELAY);
 
   return response;
 };
