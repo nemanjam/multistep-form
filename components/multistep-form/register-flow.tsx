@@ -66,9 +66,10 @@ const RegisterFlow: FC = () => {
     });
 
     if (userRegisterActionResponse.success) {
-      setCurrentStep(0);
-
-      wait(FORM_RESET_DELAY).then(() => form.reset());
+      wait(TOAST_DURATION).then(() => {
+        setCurrentStep(0);
+        wait(FORM_RESET_DELAY).then(() => form.reset());
+      });
     }
   }, [toast, userRegisterActionResponse, form]);
 
