@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Zap } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { RegisterSchemaValues } from '@/lib/schemas';
+import { RegisterSchemaValues } from '@/types/register';
 import { Button } from '@/components/ui/button';
 
 import FormProfile from './form-profile';

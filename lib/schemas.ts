@@ -6,9 +6,7 @@ export const registerSchema = z.object({
   email: z.string().email('Invalid email address'),
   phone: z
     .string()
-    .regex(/^\d{10}$/, 'hone number code must be exactly 10 digits'),
+    .regex(/^\d{6,10}$/, 'Phone number must be between 6 and 10 digits'),
   receiveSms: z.boolean(),
   model: z.string().min(1, 'Vehicle model is required'),
 });
-
-export type RegisterSchemaValues = z.output<typeof registerSchema>;
