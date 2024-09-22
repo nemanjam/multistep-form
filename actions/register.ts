@@ -1,15 +1,16 @@
 'use server';
 
 import { UserRegisterActionResponse } from '@/types/register';
+import { TOAST_DURATION } from '@/config/registration';
 import { userRegisterSchema } from '@/lib/schemas';
+import { wait, zodErrorToString } from '@/lib/utils';
 
 export const userRegisterAction = async (
   prevState: UserRegisterActionResponse,
-  data: FormData
+  formData: FormData
 ): Promise<UserRegisterActionResponse> => {
-  console.log('userRegisterAction called');
-
-  const parsedData = userRegisterSchema.safeParse(data);
+  const objectData = Object.fromEntries(formData);
+  const parsedData = userRegisterSchema.safeParse(objectData);
 
   let response: UserRegisterActionResponse = {
     success: false,
@@ -23,13 +24,15 @@ export const userRegisterAction = async (
   if (parsedData.error) {
     response = {
       success: false,
-      error: JSON.stringify(parsedData.error.format(), null, 2),
+      error: zodErrorToString(parsedData.error),
     };
   }
 
   if (response.success)
     console.log('userRegisterAction success, response:', response);
   else console.error('userRegisterAction error, response:', response);
+
+  await wait(TOAST_DURATION);
 
   return response;
 };

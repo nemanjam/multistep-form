@@ -9,9 +9,10 @@ import FormVehicle from './form-vehicle';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;
+  isPending: boolean;
 }
 
-const StepVehicle: FC<Props> = ({ form }) => {
+const StepVehicle: FC<Props> = ({ form, isPending }) => {
   return (
     <div className="flex justify-evenly items-center gap-4">
       <div className="space-y-6 basis-1/3 grow lg:max-w-lg">
@@ -30,7 +31,7 @@ const StepVehicle: FC<Props> = ({ form }) => {
       </div>
 
       <div className="basis-1/3 grow lg:max-w-lg">
-        <FormVehicle form={form} />
+        <FormVehicle form={form} isPending={isPending} />
       </div>
     </div>
   );

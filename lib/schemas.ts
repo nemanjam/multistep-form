@@ -7,6 +7,6 @@ export const userRegisterSchema = z.object({
   phone: z
     .string()
     .regex(/^\d{6,10}$/, 'Phone number must be between 6 and 10 digits'),
-  receiveSms: z.boolean(),
+  receiveSms: z.coerce.boolean(),
   model: z.string().min(1, 'Vehicle model is required'),
 });

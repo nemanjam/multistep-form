@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
+import { REGISTRATION_STEPS } from '@/config/registration';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { steps } from '@/components/multistep-form/register-flow';
 
 interface Props {
   onBack: () => void;
@@ -26,7 +26,7 @@ const Navigation: FC<Props> = ({ onBack, onNext, currentStep }) => {
 
       <Progress value={50} />
 
-      {currentStep < steps.length - 1 && (
+      {currentStep < REGISTRATION_STEPS.length - 1 && (
         <Button type="button" className="rounded-full" onClick={onNext}>
           Continue
         </Button>
