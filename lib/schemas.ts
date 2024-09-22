@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const registerSchema = z.object({
+export const userRegisterSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   zip: z.string().regex(/^\d{5}$/, 'ZIP code must be exactly 5 digits'),
   email: z.string().email('Invalid email address'),

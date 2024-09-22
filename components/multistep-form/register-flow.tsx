@@ -1,17 +1,17 @@
 'use client';
 
 import { FC, FormEvent, useEffect, useState } from 'react';
-import { registerAction } from '@/actions/register';
+import { userRegisterAction } from '@/actions/register';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormState } from 'react-dom';
 import { useForm } from 'react-hook-form';
 
 import {
-  RegisterActionResponse,
-  RegisterSchemaKeys,
-  RegisterSchemaValues,
+  UserRegisterActionResponse,
+  UserRegisterSchemaKeys,
+  UserRegisterSchemaValues,
 } from '@/types/register';
-import { registerSchema } from '@/lib/schemas';
+import { userRegisterSchema } from '@/lib/schemas';
 import { useToast } from '@/hooks/use-toast';
 import { Form } from '@/components/ui/form';
 import Navigation from '@/components/multistep-form/navigation';
@@ -31,7 +31,7 @@ export const steps = [
   },
 ];
 
-const defaultValues: RegisterSchemaValues = {
+const defaultValues: UserRegisterSchemaValues = {
   name: '',
   zip: '',
   email: '',
@@ -40,7 +40,7 @@ const defaultValues: RegisterSchemaValues = {
   model: '',
 };
 
-const initialRegisterActionResponse: RegisterActionResponse = {
+const initialUserRegisterActionResponse: UserRegisterActionResponse = {
   success: true,
   data: undefined,
 };
@@ -48,24 +48,24 @@ const initialRegisterActionResponse: RegisterActionResponse = {
 const RegisterFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
-  const form = useForm<RegisterSchemaValues>({
-    resolver: zodResolver(registerSchema),
+  const form = useForm<UserRegisterSchemaValues>({
+    resolver: zodResolver(userRegisterSchema),
     defaultValues,
   });
 
-  const [registerActionResponse, registerFormAction] = useFormState(
-    registerAction,
-    initialRegisterActionResponse
+  const [userRegisterActionResponse, userRegisterFormAction] = useFormState(
+    userRegisterAction,
+    initialUserRegisterActionResponse
   );
 
   const { toast } = useToast();
 
   useEffect(() => {
     toast({
-      title: 'Received new registerActionResponse',
-      description: JSON.stringify(registerActionResponse, null, 2),
+      title: 'Received new userRegisterActionResponse',
+      description: JSON.stringify(userRegisterActionResponse, null, 2),
     });
-  }, [toast, registerActionResponse]);
+  }, [toast, userRegisterActionResponse]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -75,7 +75,7 @@ const RegisterFlow: FC = () => {
     const onSubmit = () => {
       const formElement = event.currentTarget;
       const formData = new FormData(formElement);
-      registerFormAction(formData);
+      userRegisterFormAction(formData);
     };
 
     form.handleSubmit(onSubmit)(event);
@@ -84,8 +84,8 @@ const RegisterFlow: FC = () => {
   const handleNextStep = async () => {
     if (currentStep >= steps.length - 1) return;
 
-    const fields = steps[currentStep].fields as RegisterSchemaKeys[];
-
+    // validate first step
+    const fields = steps[currentStep].fields as UserRegisterSchemaKeys[];
     const isValid = await form.trigger(fields, { shouldFocus: true });
     if (!isValid) return;
 
@@ -102,7 +102,7 @@ const RegisterFlow: FC = () => {
     <section className="flex-1 flex flex-col">
       <Form {...form}>
         <div className="container flex-1 flex flex-col justify-center">
-          <form action={registerFormAction} onSubmit={handleSubmit}>
+          <form action={userRegisterFormAction} onSubmit={handleSubmit}>
             {currentStep === 0 && <StepProfile form={form} />}
             {currentStep === 1 && <StepVehicle form={form} />}
           </form>

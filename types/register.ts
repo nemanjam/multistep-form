@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
-import { registerSchema } from '@/lib/schemas';
+import { userRegisterSchema } from '@/lib/schemas';
 
-export type RegisterSchemaValues = z.output<typeof registerSchema>;
+export type UserRegisterSchemaValues = z.output<typeof userRegisterSchema>;
 
-export type RegisterSchemaKeys = keyof RegisterSchemaValues;
+export type UserRegisterSchemaKeys = keyof UserRegisterSchemaValues;
 
-export interface RegisterActionResponse {
+export interface UserRegisterActionResponse {
   success: boolean;
-  data?: RegisterSchemaValues;
+  data?: UserRegisterSchemaValues;
   error?: string;
 }

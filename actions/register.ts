@@ -1,17 +1,17 @@
 'use server';
 
-import { RegisterActionResponse } from '@/types/register';
-import { registerSchema } from '@/lib/schemas';
+import { UserRegisterActionResponse } from '@/types/register';
+import { userRegisterSchema } from '@/lib/schemas';
 
-export async function registerAction(
-  prevState: RegisterActionResponse,
+export const userRegisterAction = async (
+  prevState: UserRegisterActionResponse,
   data: FormData
-): Promise<RegisterActionResponse> {
-  console.log('registerAction called');
+): Promise<UserRegisterActionResponse> => {
+  console.log('userRegisterAction called');
 
-  const parsedData = registerSchema.safeParse(data);
+  const parsedData = userRegisterSchema.safeParse(data);
 
-  let response: RegisterActionResponse = {
+  let response: UserRegisterActionResponse = {
     success: false,
     error: 'Unknown error.',
   };
@@ -28,8 +28,8 @@ export async function registerAction(
   }
 
   if (response.success)
-    console.log('registerAction success, response:', response);
-  else console.error('registerAction error, response:', response);
+    console.log('userRegisterAction success, response:', response);
+  else console.error('userRegisterAction error, response:', response);
 
   return response;
-}
+};

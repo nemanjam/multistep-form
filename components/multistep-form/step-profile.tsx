@@ -2,13 +2,13 @@ import { FC } from 'react';
 import { Zap } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { RegisterSchemaValues } from '@/types/register';
+import { UserRegisterSchemaValues } from '@/types/register';
 import { Button } from '@/components/ui/button';
 
 import FormProfile from './form-profile';
 
 interface Props {
-  form: UseFormReturn<RegisterSchemaValues>;
+  form: UseFormReturn<UserRegisterSchemaValues>;
 }
 
 const StepProfile: FC<Props> = ({ form }) => {

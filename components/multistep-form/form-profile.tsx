@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { RegisterSchemaValues } from '@/types/register';
+import { UserRegisterSchemaValues } from '@/types/register';
 import {
   FormControl,
   FormField,
@@ -14,7 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '../ui/checkbox';
 
 interface Props {
-  form: UseFormReturn<RegisterSchemaValues>;
+  form: UseFormReturn<UserRegisterSchemaValues>;
 }
 // xs bg-slate, md bg-white, lg mg-slate
 const FormProfile: FC<Props> = ({ form }) => {
