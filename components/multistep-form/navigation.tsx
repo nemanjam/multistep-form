@@ -9,9 +9,17 @@ interface Props {
   onBack: () => void;
   onNext: () => void;
   currentStep: number;
+  progress: number;
+  isValidStepProfile: boolean;
 }
 
-const Navigation: FC<Props> = ({ onBack, onNext, currentStep }) => {
+const Navigation: FC<Props> = ({
+  onBack,
+  onNext,
+  currentStep,
+  progress,
+  isValidStepProfile,
+}) => {
   return (
     <div className="flex items-center justify-between gap-4">
       <Button
@@ -24,10 +32,15 @@ const Navigation: FC<Props> = ({ onBack, onNext, currentStep }) => {
         <ArrowLeft />
       </Button>
 
-      <Progress value={50} />
+      <Progress value={progress} />
 
       {currentStep < REGISTRATION_STEPS.length - 1 && (
-        <Button type="button" className="rounded-full" onClick={onNext}>
+        <Button
+          type="button"
+          className="rounded-full"
+          onClick={onNext}
+          disabled={!isValidStepProfile}
+        >
           Continue
         </Button>
       )}

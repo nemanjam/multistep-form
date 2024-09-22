@@ -1,3 +1,5 @@
+import { UserRegisterSchemaKeys } from '@/types/register';
+
 /** in milliseconds */
 export const SERVER_ACTION_DELAY = 2000;
 
@@ -24,11 +26,17 @@ export const REGISTRATION_STEPS = [
   {
     id: 'Step 1',
     name: 'Welcome',
-    fields: ['name', 'zip', 'email', 'phone', 'receiveSms'],
+    fields: [
+      'name',
+      'zip',
+      'email',
+      'phone',
+      'receiveSms',
+    ] as UserRegisterSchemaKeys[],
   },
   {
     id: 'Step 2',
     name: 'Select vehicle',
-    fields: ['model'],
+    fields: ['model'] as UserRegisterSchemaKeys[],
   },
 ];

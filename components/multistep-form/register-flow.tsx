@@ -20,8 +20,6 @@ import Navigation from '@/components/multistep-form/navigation';
 import StepProfile from '@/components/multistep-form/step-profile';
 import StepVehicle from '@/components/multistep-form/step-vehicle';
 
-// const progressStepMap = {};
-
 const defaultValues: UserRegisterSchemaValues = {
   name: 'test',
   zip: '12312',
@@ -38,10 +36,12 @@ const initialUserRegisterActionResponse: UserRegisterActionResponse = {
 
 const RegisterFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isValidStepProfile, setIsValidStepProfile] = useState(true);
 
   const form = useForm<UserRegisterSchemaValues>({
     resolver: zodResolver(userRegisterSchema),
     defaultValues,
+    mode: 'onBlur',
   });
 
   const [userRegisterActionResponse, userRegisterFormAction] = useFormState(
@@ -71,20 +71,20 @@ const RegisterFlow: FC = () => {
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    // console.log('form.getValues', form.getValues());
-    // console.log('form.formState', form.formState);
-
     form.handleSubmit(onSubmit)(event);
   };
 
   const handleNextStep = async () => {
     if (currentStep >= REGISTRATION_STEPS.length - 1) return;
 
-    // validate first step
-    const fields = REGISTRATION_STEPS[currentStep]
-      .fields as UserRegisterSchemaKeys[];
-    const isValid = await form.trigger(fields, { shouldFocus: true });
-    if (!isValid) return;
+    // validate profile step
+    if (currentStep === 0) {
+      const isValid = await form.trigger(REGISTRATION_STEPS[0].fields, {
+        shouldFocus: true,
+      });
+
+      if (!isValid) return;
+    }
 
     setCurrentStep((prev) => prev + 1);
   };
@@ -94,6 +94,45 @@ const RegisterFlow: FC = () => {
 
     setCurrentStep((prev) => prev - 1);
   };
+
+  useEffect(() => {
+    const isValid = REGISTRATION_STEPS[0].fields.reduce(
+      (acc, field) => acc && !Boolean(form.formState.errors[field]?.message),
+      true
+    );
+
+    setIsValidStepProfile(isValid);
+  }, [form.formState]);
+
+  const getProgress = (): number => {
+    const { isSubmitted } = form.formState;
+
+    let progress = 0;
+
+    switch (true) {
+      case currentStep === 0 && !isValidStepProfile:
+        progress = 25;
+        break;
+      case currentStep === 0 && isValidStepProfile:
+      case currentStep === 1 && !isPending && !isSubmitted:
+        progress = 50;
+        break;
+      case currentStep === 1 && isPending:
+        progress = 75;
+        break;
+      case currentStep === 1 && isSubmitted:
+        progress = 100;
+        break;
+
+      default:
+        progress = 0;
+        break;
+    }
+
+    return progress;
+  };
+
+  const progress = getProgress();
 
   return (
     <section className="flex-1 flex flex-col">
@@ -113,6 +152,8 @@ const RegisterFlow: FC = () => {
               onNext={handleNextStep}
               onBack={handlePrevStep}
               currentStep={currentStep}
+              progress={progress}
+              isValidStepProfile={isValidStepProfile}
             />
           </div>
         </div>
