@@ -1,12 +1,18 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoImage from '@/assets/images/repairwise-logo.png';
 
 import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
 
-export function RegistrationHeader() {
+interface Props {
+  className?: string;
+}
+
+const RegistrationHeader: FC<Props> = ({ className }) => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-background">
+    <header className={cn('sticky top-0 z-40 w-full bg-background', className)}>
       <div className="flex h-12 items-center space-x-4 sm:justify-between sm:space-x-0 max-w-screen-2xl mx-auto px-8">
         <Link href={siteConfig.mainNav[0].href}>
           <Image
@@ -20,4 +26,6 @@ export function RegistrationHeader() {
       </div>
     </header>
   );
-}
+};
+
+export default RegistrationHeader;

@@ -37,7 +37,7 @@ const Navigation: FC<Props> = ({
       {currentStep < REGISTRATION_STEPS.length - 1 && (
         <Button
           type="button"
-          className="rounded-full"
+          className="rounded-full hidden lg:flex"
           onClick={onNext}
           disabled={!isValidStepProfile}
         >

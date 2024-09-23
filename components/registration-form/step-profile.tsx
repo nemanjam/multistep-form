@@ -4,17 +4,26 @@ import { UseFormReturn } from 'react-hook-form';
 
 import { UserRegisterSchemaValues } from '@/types/registration';
 import { Button } from '@/components/ui/button';
+import { REGISTRATION_STEPS } from '@/constants/registration';
 
 import FormProfile from './form-profile';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;
+  onNext: () => void;
+  currentStep: number;
+  isValidStepProfile: boolean;
 }
 
-const StepProfile: FC<Props> = ({ form }) => {
+const StepProfile: FC<Props> = ({
+  form,
+  onNext,
+  currentStep,
+  isValidStepProfile,
+}) => {
   return (
-    <div className="flex justify-evenly items-center gap-4">
-      <div className="basis-1/3 grow lg:max-w-lg">
+    <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-evenly">
+      <div className="w-full flex-1 lg:max-w-lg">
         <div className="lg:max-w-xs mx-auto space-y-6">
           <Button
             type="button"
@@ -26,16 +35,29 @@ const StepProfile: FC<Props> = ({ form }) => {
           <h2 className="text-2xl font-bold">
             Welcome! Let&apos;s get started.
           </h2>
-          <p>
+          <p className="hidden lg:block">
             We&apos;ll use this information to send you your free health check
             and find service providers in your area.
           </p>
         </div>
       </div>
 
-      <div className="basis-1/3 grow lg:max-w-lg">
+      <div className="w-full flex-1 lg:max-w-lg">
         <FormProfile form={form} />
       </div>
+
+      {currentStep < REGISTRATION_STEPS.length - 1 && (
+        <div className="w-full flex-1 lg:hidden">
+          <Button
+            type="button"
+            className="rounded-full w-full"
+            onClick={onNext}
+            disabled={!isValidStepProfile}
+          >
+            Continue
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

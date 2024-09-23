@@ -16,7 +16,7 @@ import { objectToFormData, wait } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { Form } from '@/components/ui/form';
 import Navigation from '@/components/registration-form/navigation';
-import { RegistrationHeader } from '@/components/registration-form/registration-header';
+import RegistrationHeader from '@/components/registration-form/registration-header';
 import StepProfile from '@/components/registration-form/step-profile';
 import StepVehicle from '@/components/registration-form/step-vehicle';
 import { REGISTRATION_STEPS } from '@/constants/registration';
@@ -156,13 +156,20 @@ const RegistrationFlow: FC = () => {
   const progress = getProgress();
 
   return (
-    <div className="flex-1 flex flex-col">
-      <RegistrationHeader />
+    <div className="flex-1 flex flex-col-reverse lg:flex-col">
+      <RegistrationHeader className="hidden lg:block" />
 
       <Form {...form}>
         <main className="container flex-1 flex flex-col justify-center">
           <form action={userRegisterFormAction} onSubmit={handleSubmit}>
-            {currentStep === 0 && <StepProfile form={form} />}
+            {currentStep === 0 && (
+              <StepProfile
+                form={form}
+                onNext={handleNextStep}
+                currentStep={currentStep}
+                isValidStepProfile={isValidStepProfile}
+              />
+            )}
             {currentStep === 1 && (
               <StepVehicle form={form} isPending={isPending} />
             )}
