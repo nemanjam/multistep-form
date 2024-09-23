@@ -22,6 +22,7 @@ module.exports = {
     '^@/constants/(.*)$',
     '^@/data/(.*)$',
     '^@/styles/(.*)$',
+    '^@/assets/(.*)$',
     '^@/app/(.*)$',
     '',
     '^[./]',

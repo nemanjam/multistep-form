@@ -15,7 +15,7 @@ const FormVehicle: FC<Props> = ({ form, isPending }) => {
   const activeButtonId = form.getValues('model');
 
   return (
-    <div className="space-y-2 rounded-lg p-8 bg-card">
+    <div className="space-y-2 rounded-2xl p-8 bg-card">
       {VEHICLES.map(({ name, id }) => (
         <div key={id}>
           <Button

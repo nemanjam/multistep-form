@@ -35,6 +35,7 @@ export const userRegisterAction = async (
     case 'error':
       console.error('userRegisterAction error, response:', response);
       break;
+
     default:
       console.log('userRegisterAction initial, response:', response);
       break;
