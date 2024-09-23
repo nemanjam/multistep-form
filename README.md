@@ -8,6 +8,8 @@ https://multistep-form.arm1.nemanjamitic.com/register
 
 ## Screenshots
 
+https://github.com/user-attachments/assets/0c5ceb52-017f-4e8c-a0af-22f5230d2f0b
+
 ## Installation and running
 
 ```bash
