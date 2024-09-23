@@ -37,6 +37,7 @@ yarn start
 - In few places I used on-off values for colors, otherwise I would need to restructure entire semantic colors palette (all components are dependent on the palette) which would require much more work.
 - The folder/file structure and naming can be improved and refactored once I have more context about the rest of the app.
 - The widths on large screens are approximate, as I used screenshot mockups, they can be further adjusted.
+- Form is validated `onBlur`, can be modified to `onChange` or `onSubmit`.
 
 #### Tailwind breakpoints
 
