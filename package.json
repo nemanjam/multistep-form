@@ -1,6 +1,6 @@
 {
-  "name": "next-template",
-  "version": "0.0.2",
+  "name": "multistep-form",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,7 +12,9 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "clean": "rm -rf node_modules yarn.lock"
+    "clean": "rm -rf node_modules yarn.lock",
+    "docker:build:push:arm": "docker buildx build -f ./Dockerfile -t nemanjamitic/multistep-form --platform linux/arm64 --push .",
+    "docker:build:push:x86": "docker buildx build -f ./Dockerfile -t nemanjamitic/multistep-form --platform linux/amd64 --push ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
