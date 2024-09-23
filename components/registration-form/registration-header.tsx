@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logoImage from '@/assets/images/repairwise-logo.png';
 
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
+import logoImage from '@/assets/images/repairwise-logo.png';
 
 interface Props {
   className?: string;
