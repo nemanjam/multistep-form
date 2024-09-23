@@ -160,8 +160,12 @@ const RegistrationFlow: FC = () => {
       <RegistrationHeader className="hidden lg:block" />
 
       <Form {...form}>
-        <main className="container flex-1 flex flex-col justify-center">
-          <form action={userRegisterFormAction} onSubmit={handleSubmit}>
+        <main className="container flex-1 flex flex-col justify-center pt-0 sm:pt-16 lg:pt-0">
+          <form
+            action={userRegisterFormAction}
+            onSubmit={handleSubmit}
+            className="flex-1 flex flex-col"
+          >
             {currentStep === 0 && (
               <StepProfile
                 form={form}
