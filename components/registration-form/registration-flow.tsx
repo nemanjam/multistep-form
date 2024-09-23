@@ -21,6 +21,7 @@ import StepProfile from '@/components/registration-form/step-profile';
 import StepVehicle from '@/components/registration-form/step-vehicle';
 import { REGISTRATION_STEPS } from '@/constants/registration';
 
+/** testing data */
 const __defaultValues: UserRegisterSchemaValues = {
   name: 'John Doe',
   zip: '12345',
