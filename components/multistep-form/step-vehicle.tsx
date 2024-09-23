@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { CarFront } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { UserRegisterSchemaValues } from '@/types/register';
+import { UserRegisterSchemaValues } from '@/types/registration';
 import { Button } from '@/components/ui/button';
 
 import FormVehicle from './form-vehicle';

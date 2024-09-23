@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { UserRegisterSchemaValues } from '@/types/register';
-import { VEHICLES } from '@/config/registration';
+import { UserRegisterSchemaValues } from '@/types/registration';
 import { Button } from '@/components/ui/button';
+import { VEHICLES } from '@/data/registration';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;

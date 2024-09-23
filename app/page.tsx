@@ -1,5 +1,5 @@
-import RegisterFlow from '@/components/multistep-form/register-flow';
+import RegistrationFlow from '@/components/multistep-form/registration-flow';
 
 export default function IndexPage() {
-  return <RegisterFlow />;
+  return <RegistrationFlow />;
 }

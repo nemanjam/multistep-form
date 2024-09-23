@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { UserRegisterSchemaValues } from '@/types/register';
+import { UserRegisterSchemaValues } from '@/types/registration';
 import {
   FormControl,
   FormField,

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-import { REGISTRATION_STEPS } from '@/config/registration';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { REGISTRATION_STEPS } from '@/constants/registration';
 
 interface Props {
   onBack: () => void;

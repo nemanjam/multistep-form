@@ -9,12 +9,8 @@ import { useForm } from 'react-hook-form';
 import {
   UserRegisterActionResponse,
   UserRegisterSchemaValues,
-} from '@/types/register';
-import {
-  FORM_RESET_DELAY,
-  REGISTRATION_STEPS,
-  TOAST_DURATION,
-} from '@/config/registration';
+} from '@/types/registration';
+import { FORM_RESET_DELAY, TOAST_DURATION } from '@/config/env';
 import { userRegisterSchema } from '@/lib/schemas';
 import { objectToFormData, wait } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -22,6 +18,7 @@ import { Form } from '@/components/ui/form';
 import Navigation from '@/components/multistep-form/navigation';
 import StepProfile from '@/components/multistep-form/step-profile';
 import StepVehicle from '@/components/multistep-form/step-vehicle';
+import { REGISTRATION_STEPS } from '@/constants/registration';
 
 const defaultValues: UserRegisterSchemaValues = {
   name: '',
@@ -37,7 +34,7 @@ const initialUserRegisterActionResponse: UserRegisterActionResponse = {
   data: undefined,
 };
 
-const RegisterFlow: FC = () => {
+const RegistrationFlow: FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isValidStepProfile, setIsValidStepProfile] = useState(true);
 
@@ -173,4 +170,4 @@ const RegisterFlow: FC = () => {
   );
 };
 
-export default RegisterFlow;
+export default RegistrationFlow;

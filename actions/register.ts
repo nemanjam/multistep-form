@@ -1,7 +1,7 @@
 'use server';
 
-import { UserRegisterActionResponse } from '@/types/register';
-import { SERVER_ACTION_DELAY } from '@/config/registration';
+import { UserRegisterActionResponse } from '@/types/registration';
+import { SERVER_ACTION_DELAY } from '@/config/env';
 import { userRegisterSchema } from '@/lib/schemas';
 import { wait, zodErrorToString } from '@/lib/utils';
 
