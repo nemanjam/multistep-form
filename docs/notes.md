@@ -4,4 +4,4 @@
 - tablet - sm - lg
 - desktop - lg - max (max-w-screen-2xl = 1536px)
 
-For main content width it uses default Tailwind `container` class that sets `max-width` to the `min-width` of the breakpoint.
+For main content width it uses default Tailwind `container` class that sets `max-width` to the `min-width` of the breakpoint. It is a reasonable default, if needed it can be limited to different preference.

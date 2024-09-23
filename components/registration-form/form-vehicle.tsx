@@ -15,7 +15,7 @@ const FormVehicle: FC<Props> = ({ form, isPending }) => {
   const activeButtonId = form.getValues('model');
 
   return (
-    <div className="space-y-2 rounded-2xl p-8 bg-card">
+    <div className="space-y-3 rounded-2xl lg:bg-card lg:p-8">
       {VEHICLES.map(({ name, id }) => (
         <div key={id}>
           <Button
@@ -25,7 +25,7 @@ const FormVehicle: FC<Props> = ({ form, isPending }) => {
             type="submit"
             value={id}
             variant="outline"
-            className="w-full h-auto flex items-center justify-between gap-4 p-4 bg-card"
+            className="w-full h-auto flex items-center justify-between gap-4 p-3 rounded-lg bg-card"
           >
             <div className="text-start">
               <p className="text-lg font-medium">{name}</p>

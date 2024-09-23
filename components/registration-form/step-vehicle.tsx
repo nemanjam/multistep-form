@@ -14,8 +14,8 @@ interface Props {
 
 const StepVehicle: FC<Props> = ({ form, isPending }) => {
   return (
-    <div className="flex justify-evenly items-center gap-4">
-      <div className="space-y-6 basis-1/3 grow lg:max-w-lg">
+    <div className="flex-1 flex flex-col items-center gap-4 lg:flex-row lg:justify-evenly">
+      <div className="w-full lg:flex-1 lg:max-w-lg">
         <div className="lg:max-w-xs mx-auto space-y-6">
           <Button
             type="button"
@@ -24,13 +24,13 @@ const StepVehicle: FC<Props> = ({ form, isPending }) => {
             <CarFront className="mr-2 size-4" />
             Vehicle
           </Button>
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold lg:pr-16">
             Select a vehicle for your free health check.
           </h2>
         </div>
       </div>
 
-      <div className="basis-1/3 grow lg:max-w-lg">
+      <div className="w-full lg:flex-1 lg:max-w-lg">
         <FormVehicle form={form} isPending={isPending} />
       </div>
     </div>

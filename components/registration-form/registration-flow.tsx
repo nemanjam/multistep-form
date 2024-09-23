@@ -160,7 +160,7 @@ const RegistrationFlow: FC = () => {
       <RegistrationHeader className="hidden lg:block" />
 
       <Form {...form}>
-        <main className="container flex-1 flex flex-col justify-center pt-0 sm:pt-16 lg:pt-0">
+        <main className="container flex-1 flex flex-col justify-center pt-4 sm:pt-16 lg:pt-0">
           <form
             action={userRegisterFormAction}
             onSubmit={handleSubmit}
