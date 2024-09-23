@@ -15,9 +15,9 @@ import { userRegisterSchema } from '@/lib/schemas';
 import { objectToFormData, wait } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { Form } from '@/components/ui/form';
-import Navigation from '@/components/multistep-form/navigation';
-import StepProfile from '@/components/multistep-form/step-profile';
-import StepVehicle from '@/components/multistep-form/step-vehicle';
+import Navigation from '@/components/registration-form/navigation';
+import StepProfile from '@/components/registration-form/step-profile';
+import StepVehicle from '@/components/registration-form/step-vehicle';
 import { REGISTRATION_STEPS } from '@/constants/registration';
 
 const defaultValues: UserRegisterSchemaValues = {
