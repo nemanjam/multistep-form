@@ -13,24 +13,32 @@ export const userRegisterAction = async (
   const parsedData = userRegisterSchema.safeParse(objectData);
 
   let response: UserRegisterActionResponse = {
-    success: false,
+    status: 'error',
     error: 'Unknown error.',
   };
 
   if (parsedData.success) {
-    response = { success: true, data: parsedData.data };
+    response = { status: 'success', data: parsedData.data };
   }
 
   if (parsedData.error) {
     response = {
-      success: false,
+      status: 'error',
       error: zodErrorToString(parsedData.error),
     };
   }
 
-  if (response.success)
-    console.log('userRegisterAction success, response:', response);
-  else console.error('userRegisterAction error, response:', response);
+  switch (response.status) {
+    case 'success':
+      console.log('userRegisterAction success, response:', response);
+      break;
+    case 'error':
+      console.error('userRegisterAction error, response:', response);
+      break;
+    default:
+      console.log('userRegisterAction initial, response:', response);
+      break;
+  }
 
   await wait(SERVER_ACTION_DELAY);
 

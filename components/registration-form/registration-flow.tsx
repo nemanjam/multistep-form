@@ -30,7 +30,7 @@ const defaultValues: UserRegisterSchemaValues = {
 };
 
 const initialUserRegisterActionResponse: UserRegisterActionResponse = {
-  success: true,
+  status: 'initial',
   data: undefined,
 };
 
@@ -53,8 +53,13 @@ const RegistrationFlow: FC = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    if (!['success', 'error'].includes(userRegisterActionResponse.status))
+      return;
+
     toast({
-      ...(!userRegisterActionResponse.success && { variant: 'destructive' }),
+      ...(userRegisterActionResponse.status === 'error' && {
+        variant: 'destructive',
+      }),
       duration: TOAST_DURATION,
       title: 'Received new userRegisterActionResponse',
       description: (
@@ -62,12 +67,10 @@ const RegistrationFlow: FC = () => {
       ),
     });
 
-    if (userRegisterActionResponse.success) {
-      wait(TOAST_DURATION).then(() => {
-        setCurrentStep(0);
-        wait(FORM_RESET_DELAY).then(() => form.reset());
-      });
-    }
+    wait(TOAST_DURATION).then(() => {
+      setCurrentStep(0);
+      wait(FORM_RESET_DELAY).then(() => form.reset());
+    });
   }, [toast, userRegisterActionResponse, form]);
 
   const onSubmit = (data: UserRegisterSchemaValues) => {
