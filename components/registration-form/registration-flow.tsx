@@ -22,10 +22,10 @@ import StepVehicle from '@/components/registration-form/step-vehicle';
 import { REGISTRATION_STEPS } from '@/constants/registration';
 
 const __defaultValues: UserRegisterSchemaValues = {
-  name: 'asd',
+  name: 'John Doe',
   zip: '12345',
-  email: 'asd@asd.asd',
-  phone: '1231231',
+  email: 'email@email.com',
+  phone: '1234567',
   receiveSms: false,
   model: '',
 };
