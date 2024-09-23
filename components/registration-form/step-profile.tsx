@@ -18,7 +18,7 @@ const StepProfile: FC<Props> = ({ form }) => {
         <div className="lg:max-w-xs mx-auto space-y-6">
           <Button
             type="button"
-            className="uppercase rounded-xl text-lime-300 text-xs"
+            className="uppercase rounded-xl text-lime-300 dark:text-primary-foreground text-xs"
           >
             <Zap className="mr-2 size-4" />
             Profile Info

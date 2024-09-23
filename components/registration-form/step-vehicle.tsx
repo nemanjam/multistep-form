@@ -19,7 +19,7 @@ const StepVehicle: FC<Props> = ({ form, isPending }) => {
         <div className="lg:max-w-xs mx-auto space-y-6">
           <Button
             type="button"
-            className="uppercase rounded-xl text-lime-300 text-xs"
+            className="uppercase rounded-xl text-lime-300 dark:text-primary-foreground text-xs"
           >
             <CarFront className="mr-2 size-4" />
             Vehicle

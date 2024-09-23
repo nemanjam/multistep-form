@@ -14,7 +14,7 @@ export default function IndexPage() {
               Home page
             </h1>
             <p className="max-w-[700px] text-lg text-muted-foreground">
-              Go to
+              Go to the
               <Link href="/register">
                 <Button variant="link" className="px-1">
                   Register page
