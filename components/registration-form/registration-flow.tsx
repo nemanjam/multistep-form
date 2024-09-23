@@ -22,6 +22,15 @@ import StepVehicle from '@/components/registration-form/step-vehicle';
 import { REGISTRATION_STEPS } from '@/constants/registration';
 
 const defaultValues: UserRegisterSchemaValues = {
+  name: 'asd',
+  zip: '12345',
+  email: 'asd@asd.asd',
+  phone: '1231231',
+  receiveSms: false,
+  model: '',
+};
+
+const defaultValues1: UserRegisterSchemaValues = {
   name: '',
   zip: '',
   email: '',
