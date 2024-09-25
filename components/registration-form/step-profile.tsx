@@ -4,9 +4,8 @@ import { UseFormReturn } from 'react-hook-form';
 
 import { UserRegisterSchemaValues } from '@/types/registration';
 import { Button } from '@/components/ui/button';
+import FormProfile from '@/components/registration-form/form-profile';
 import { REGISTRATION_STEPS } from '@/constants/registration';
-
-import FormProfile from './form-profile';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;

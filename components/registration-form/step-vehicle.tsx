@@ -4,8 +4,7 @@ import { UseFormReturn } from 'react-hook-form';
 
 import { UserRegisterSchemaValues } from '@/types/registration';
 import { Button } from '@/components/ui/button';
-
-import FormVehicle from './form-vehicle';
+import FormVehicle from '@/components/registration-form/form-vehicle';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;

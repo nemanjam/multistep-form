@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { UserRegisterSchemaValues } from '@/types/registration';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   FormControl,
   FormField,
@@ -10,8 +11,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
-import { Checkbox } from '../ui/checkbox';
 
 interface Props {
   form: UseFormReturn<UserRegisterSchemaValues>;
